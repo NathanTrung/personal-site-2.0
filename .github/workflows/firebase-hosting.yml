@@ -3,7 +3,7 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
-      - master  # or 'main' if you're using that branch
+      - main  # or 'main' if you're using that branch
 
 jobs:
   build-and-deploy:
