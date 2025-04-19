@@ -13,12 +13,37 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 import HomeSection from './pages/Home.vue'
 import AboutSection from './pages/About.vue'
 import ProjectsSection from './pages/Projects.vue'
 import ContactSection from './pages/Contact.vue'
+
+// Clean URL on page load if it contains a hash
+onMounted(() => {
+  // If URL has a hash, scroll to the section and then clean the URL
+  if (window.location.hash) {
+    const sectionId = window.location.hash.substring(1) // Remove the # symbol
+    const element = document.getElementById(sectionId)
+    
+    if (element) {
+      // Small delay to ensure the page has fully loaded
+      setTimeout(() => {
+        // Scroll with offset for navbar
+        const yOffset = -130
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+        window.scrollTo({ top: y, behavior: 'smooth' })
+        
+        // Clean URL
+        setTimeout(() => {
+          history.pushState('', document.title, window.location.pathname + window.location.search)
+        }, 100)
+      }, 300)
+    }
+  }
+})
 </script>
 
 <style>
@@ -27,66 +52,80 @@ import ContactSection from './pages/Contact.vue'
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
-/* General body styles for dark mode */
+/* General body styles */
 body {
-  background-color: #121212 /* Very dark background */ !important;
-  color: #e0e0e0; /* Light gray text for readability */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  padding-top: 80px; /* Adjusted to match navbar height */
+  background-color: var(--bg-color) !important;
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Main content area */
+main {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color);
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* Style for links */
 a {
-  color: #00b7ff; /* Light blue for links */
+  color: var(--primary-color);
   text-decoration: none;
 }
 
 a:hover {
-  color: #56d736; /* Green on hover */
+  color: var(--primary-color);
   text-decoration: underline;
 }
 
 /* Button and interactive elements */
 button, .button-press {
-  background-color: #333333; /* Dark button background */
-  color: #e0e0e0; /* Light text */
-  border: 1px solid #444444; /* Slightly lighter border */
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
   padding: 10px 15px;
   font-size: 1em;
   cursor: pointer;
   transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
 button:hover, .button-press:hover {
-  background-color: #56d736; /* Green on hover */
-  border-color: #56d736;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--bg-color);
 }
 
 /* Footer styles */
 footer {
-  background-color: #121212; /* Same dark background for footer */
-  color: #e0e0e0;
+  background-color: var(--card-bg);
+  color: var(--text-color);
   padding: 20px;
   text-align: center;
   font-size: 0.9em;
-  border-top: 1px solid #444444;
+  border-top: 1px solid var(--border-color);
 }
 
 footer a {
-  color: #00b7ff;
+  color: var(--primary-color);
   text-decoration: none;
 }
 
 footer a:hover {
-  color: #56d736;
+  color: var(--primary-color);
 }
 
 /* Styling for header and sections */
 h1, h2, h3 {
-  color: #56d736; /* Use green for headings */
+  color: var(--text-color);
 }
 
 h1 {
@@ -103,44 +142,51 @@ h3 {
 
 /* Form elements */
 input, textarea {
-  background-color: #333333; /* Dark background for inputs */
-  color: #e0e0e0; /* Light text */
-  border: 1px solid #444444; /* Slightly lighter border */
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
   padding: 10px;
   margin-bottom: 15px;
   font-size: 1em;
+  border-radius: 4px;
 }
 
 input:focus, textarea:focus {
-  border-color: #56d736; /* Green border on focus */
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 /* Card elements */
 .card {
-  background-color: #333333; /* Dark background for cards */
-  color: #e0e0e0; /* Light text */
-  border: 1px solid #444444; /* Slightly lighter border */
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
   padding: 20px;
   margin: 20px 0;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
 }
 
 .card:hover {
-  background-color: #444444; /* Slightly lighter card on hover */
+  box-shadow: var(--card-shadow-hover);
 }
 
 /* Navigation bar */
 .navbar {
-  background-color: #222222; /* Dark navbar */
-  color: #e0e0e0;
+  background-color: var(--nav-bg);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
 }
 
 .navbar a {
-  color: #e0e0e0;
+  color: var(--text-color);
 }
 
 .navbar a:hover {
-  color: #56d736; /* Green on hover */
+  color: var(--primary-color);
 }
 
 /* Container */
@@ -150,50 +196,54 @@ input:focus, textarea:focus {
   padding: 20px;
 }
 
-/* Dark background for all sections */
+/* Light background for all sections */
 section {
-  background-color: #1c1c1c; /* Dark sections */
-  color: #e0e0e0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   padding: 20px;
   margin: 10px 0;
+  border-radius: 8px;
 }
 
 /* Table styles */
 table {
   width: 100%;
-  background-color: #333333;
-  color: #e0e0e0;
+  background-color: var(--card-bg);
+  color: var(--text-color);
   border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 table th, table td {
   padding: 10px;
-  border: 1px solid #444444;
+  border: 1px solid var(--border-color);
 }
 
 table th {
-  background-color: #444444;
+  background-color: var(--nav-bg);
 }
 
 /* Modal styles */
 .modal {
-  background-color: #2b2b2b;
-  color: #e0e0e0;
-  border: 1px solid #444444;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
 }
 
 .modal-header {
-  background-color: #333333;
-  color: #e0e0e0;
+  background-color: var(--nav-bg);
+  color: var(--text-color);
 }
 
 .modal-footer {
-  background-color: #444444;
+  background-color: var(--nav-bg);
 }
 
 @media (max-width: 768px) {
   body {
-    padding: 10px;
+    padding-top: 100px; /* Increased padding for medium screens */
   }
 
   .container {
@@ -209,7 +259,26 @@ table th {
   }
 }
 
+@media (max-width: 480px) {
+  body {
+    padding-top: 95px; /* Adjusted for small screens */
+  }
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* This adjusts the scroll-to position to account for fixed navbar */
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 100px; /* Adjusted for medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    scroll-padding-top: 95px; /* Adjusted for small screens */
+  }
 }
 </style>

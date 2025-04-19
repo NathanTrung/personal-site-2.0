@@ -2,22 +2,32 @@
   <nav class="navbar fixed-top navbar-expand-lg shadow-sm custom-navbar">
     <div class="container d-flex justify-content-between align-items-center w-100">
       <!-- Logo -->
-      <a href="#home" class="navbar-brand">
-        <img src="@/assets/razor.png" alt="Logo" class="Logo button-press" width="200" />
+      <a @click.prevent="scrollToSection('home')" href="#home" class="navbar-brand">
+        <img :src="isDark ? RazorWhite : Razor" alt="Logo" class="Logo button-press" width="200" />
       </a>
 
-      <!-- Desktop Nav Items -->
-      <ul class="navbar-nav d-none d-lg-flex flex-row gap-3 ms-auto">
-        <li class="nav-item"><a href="#home" class="nav-link button-press">Home</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link button-press">About Me</a></li>
-        <li class="nav-item"><a href="#projects" class="nav-link button-press">Projects</a></li>
-        <li class="nav-item"><a href="#contact" class="nav-link button-press">Contact</a></li>
-      </ul>
+      <!-- Desktop Nav Items with Theme Toggle -->
+      <div class="d-flex align-items-center gap-3">
+        <button class="theme-toggle d-none d-lg-flex" @click="toggleTheme" aria-label="Toggle theme">
+          <FontAwesomeIcon :icon="isDark ? faSun : faMoon" />
+        </button>
+        <ul class="navbar-nav d-none d-lg-flex flex-row gap-3">
+          <li class="nav-item"><a @click.prevent="scrollToSection('home')" href="#home" class="nav-link button-press">Home</a></li>
+          <li class="nav-item"><a @click.prevent="scrollToSection('about')" href="#about" class="nav-link button-press">About Me</a></li>
+          <li class="nav-item"><a @click.prevent="scrollToSection('projects')" href="#projects" class="nav-link button-press">Projects</a></li>
+          <li class="nav-item"><a @click.prevent="scrollToSection('contact')" href="#contact" class="nav-link button-press">Contact</a></li>
+        </ul>
+      </div>
 
-      <!-- Mobile Menu Icon -->
-      <button class="navbar-toggler d-lg-none" @click="toggleMenu" ref="menuButtonRef" type="button">
-        <i class="fas fa-bars menuicon"></i>
-      </button>
+      <!-- Mobile Menu Icon and Theme Toggle -->
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button class="theme-toggle" @click="toggleTheme" aria-label="Toggle theme">
+          <FontAwesomeIcon :icon="isDark ? faSun : faMoon" />
+        </button>
+        <button class="navbar-toggler" @click="toggleMenu" ref="menuButtonRef" type="button">
+          <i class="fas fa-bars menuicon"></i>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Dropdown Menu -->
@@ -28,16 +38,25 @@
       style="z-index: 1000;"
       @mouseleave="handleMouseLeave"
     >
-      <a href="#home" class="dropdown-item" @click="handleLinkClick">Home</a>
-      <a href="#about" class="dropdown-item" @click="handleLinkClick">About</a>
-      <a href="#contact" class="dropdown-item" @click="handleLinkClick">Contact</a>
-      <a href="#projects" class="dropdown-item" @click="handleLinkClick">Projects</a>
+      <a @click="handleSectionClick('home')" href="#home" class="dropdown-item">Home</a>
+      <a @click="handleSectionClick('about')" href="#about" class="dropdown-item">About</a>
+      <a @click="handleSectionClick('projects')" href="#projects" class="dropdown-item">Projects</a>
+      <a @click="handleSectionClick('contact')" href="#contact" class="dropdown-item">Contact</a>
     </div>
   </nav>
 </template>
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+import { useThemeStore } from '@/stores/theme'
+import { storeToRefs } from 'pinia'
+import Razor from '@/assets/razor.png'
+import RazorWhite from '@/assets/razor-white.png'
+
+const themeStore = useThemeStore()
+const { isDark } = storeToRefs(themeStore)
 
 const isOpen = ref(false)
 const dropdownRef = ref(null)
@@ -49,6 +68,39 @@ const toggleMenu = () => {
 
 const handleLinkClick = () => {
   isOpen.value = false
+}
+
+const scrollToSection = (sectionId) => {
+  // Close the menu if open
+  isOpen.value = false
+  
+  // Scroll to the section
+  const element = document.getElementById(sectionId)
+  if (element) {
+    // Get appropriate offset based on screen size
+    let yOffset = -130; // Default
+    
+    if (window.innerWidth <= 768) {
+      yOffset = -100; // Medium screens
+    }
+    
+    if (window.innerWidth <= 480) {
+      yOffset = -95; // Small screens
+    }
+    
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+    window.scrollTo({ top: y, behavior: 'smooth' })
+    
+    // Clean URL by removing hash after scrolling
+    setTimeout(() => {
+      history.pushState('', document.title, window.location.pathname + window.location.search)
+    }, 10)
+  }
+}
+
+const handleSectionClick = (sectionId) => {
+  isOpen.value = false
+  scrollToSection(sectionId)
 }
 
 const handleMouseLeave = () => {
@@ -66,8 +118,13 @@ const handleClickOutside = (event) => {
   }
 }
 
+const toggleTheme = () => {
+  themeStore.toggleTheme()
+}
+
 onMounted(() => {
   document.addEventListener('mousedown', handleClickOutside)
+  themeStore.initTheme()
 })
 
 onBeforeUnmount(() => {
@@ -78,82 +135,162 @@ onBeforeUnmount(() => {
 <style scoped>
 /* Navbar custom background */
 .custom-navbar {
-  background-color: #1a1a1a !important;
+  background-color: var(--nav-bg) !important;
+  box-shadow: var(--card-shadow);
+  padding: 0.5rem 0;
 }
 
-/* Nav link styles for dark background */
+/* Nav link styles */
 .navbar-nav .nav-link {
-  color: #cccccc !important;
+  color: var(--text-color) !important;
   transition: color 0.3s ease;
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  padding: 0.5rem 0.75rem;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #a6e28c !important; /* softer green */
+  color: var(--primary-color) !important;
 }
 
 /* Dropdown nav item hover effect */
 .dropdown-item {
-  color: #dddddd;
+  color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .dropdown-item:hover {
-  background-color: #232323;
-  color: #a6e28c; /* softer green */
+  background-color: var(--nav-bg);
+  color: var(--primary-color);
 }
 
 /* Mobile menu button styles */
 .navbar-toggler {
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 2px solid transparent;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
   background-color: transparent;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .navbar-toggler:hover {
-  background-color: #333333;
-  transform: scale(1.1);
+  background-color: var(--nav-bg);
+  transform: scale(1.05);
 }
 
 .menuicon {
-  color: #ffffff;
-  font-size: 30px;
+  color: var(--text-color);
+  font-size: 24px;
   transition: color 0.3s ease;
 }
 
 .navbar-toggler:hover .menuicon {
-  color: #56d736;
+  color: var(--primary-color);
 }
 
 .navbar-toggler:focus, 
 .navbar-toggler:active {
   outline: none;
-  border: none;
-  box-shadow: none;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 /* Dropdown for mobile menu */
 .custom-dropdown {
-  background-color: #1a1a1a;
-  color: #e0e0e0;
+  background-color: var(--card-bg);
+  color: var(--text-color);
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
-}
-
-.dropdown-item {
-  color: #e0e0e0;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+  min-width: 200px;
 }
 
 .Logo {
   height: auto;
-  width: 200px; /* or match what you use in HTML */
-  max-height: 60px; /* to constrain vertical growth */
+  width: clamp(150px, 20vw, 250px);
+  max-height: 60px;
 }
 
-
 a {
-  color: #56d736 !important;
+  color: var(--primary-color) !important;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background-color: var(--nav-bg);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .custom-navbar {
+    padding: 0.4rem 0;
+  }
+
+  .Logo {
+    width: clamp(140px, 20vw, 200px);
+    max-height: 55px;
+  }
+
+  .navbar-toggler {
+    padding: 6px 10px;
+  }
+
+  .menuicon {
+    font-size: 20px;
+  }
+
+  .theme-toggle {
+    font-size: 1rem;
+    padding: 0.3rem;
+  }
+
+  .custom-dropdown {
+    min-width: 180px;
+    padding: 0.5rem;
+  }
+
+  .dropdown-item {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-navbar {
+    padding: 0.4rem 0;
+  }
+
+  .Logo {
+    width: clamp(120px, 18vw, 180px);
+    max-height: 50px;
+  }
+
+  .navbar-toggler {
+    padding: 5px 8px;
+  }
+
+  .menuicon {
+    font-size: 18px;
+  }
+
+  .theme-toggle {
+    font-size: 0.9rem;
+    padding: 0.25rem;
+  }
 }
 </style>

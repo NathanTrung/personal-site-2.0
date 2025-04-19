@@ -1,18 +1,19 @@
 <template>
   <div class="main">
-    <div class="wrapper overlay py-5">
-      <div id="pageintro2" class="container">
+    <!-- About Me Section -->
+    <div class="wrapper bg-light-custom py-4 mb-0">
+      <div class="container py-2">
         <div class="row align-items-center">
           <div class="col-md-6 mb-4 mb-md-0">
-            <h1 class="text-uppercase fw-bold text-light">About Me</h1>
-            <p class="text-light">I'm a Software Developer based in Melbourne, Australia.</p>
-            <p class="text-light">
+            <h1 class="text-uppercase fw-bold">About Me</h1>
+            <p>I'm a Software Developer based in Melbourne, Australia.</p>
+            <p>
               Since 2021, I've been passionate about transforming complex challenges into elegant software solutions...
             </p>
-            <p class="text-light">
+            <p>
               Before I discovered my passion for developing software, I was immersed in the study of Business...
             </p>
-            <p class="resume-prompt d-flex flex-wrap align-items-center text-light">
+            <p class="resume-prompt d-flex flex-wrap align-items-center">
               <span>Click</span> <span class="ms-1">My</span> <span class="ms-1">Photo</span>
               <span class="ms-1">to</span> <span class="ms-1">Discover</span>
               <span class="ms-1">My</span> <span class="ms-1">Resume</span>
@@ -30,14 +31,14 @@
 
     <ResumeModal :is-open="isModalOpen" @close="closeModal" :pdf-url="pdfURL" />
 
-    <!-- Reverted Academic Journey Section Background -->
-    <div class="wrapper row3 py-5 bg-dark-custom">
-      <main class="container">
-        <div class="text-center mb-5">
-          <h3 class="fs-2 fw-bold text-light">My Academic Journey</h3>
+    <!-- Academic Journey Section -->
+    <div class="wrapper bg-light-custom py-4 mt-0 mb-0">
+      <div class="container py-2">
+        <div class="text-center mb-4">
+          <h3 class="fs-2 fw-bold animated-heading">My Academic Journey</h3>
         </div>
         <VueVerticalTimeline />
-      </main>
+      </div>
     </div>
   </div>
 </template>
@@ -60,47 +61,107 @@ function closeModal() {
 
 <style scoped>
 .main {
-  padding-top: 80px;
+  padding-top: 0;
+  margin-top: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-.overlay {
-  background-color: rgba(0, 0, 0, 0.7) !important; /* Apply semi-transparent black background */
-  color: #e0e0e0;
+.bg-light-custom {
+  background-color: var(--nav-bg);
+  color: var(--text-color);
 }
 
-.text-light {
-  color: #e0e0e0;
+/* Light Background Section */
+.wrapper {
+  margin: 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--border-color);
+  overflow: visible;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 h1, h3, h4 {
-  color: #56d736 !important;
+  color: var(--text-color) !important;
 }
 
 .resume-image {
   cursor: pointer;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
 }
 
 .resume-prompt span {
   margin-right: 5px;
   white-space: nowrap;
+  color: var(--text-color);
 }
 
 .resume-prompt {
-  color: #e0e0e0;
-}
-
-.bg-dark-custom {
-  background-color: #121212 !important;  /* Reverted back to solid black */
-  color: #e0e0e0;
+  color: var(--text-color);
 }
 
 /* Styling for resume prompt hover effect */
 .resume-prompt span:hover {
-  color: #56d736;
+  color: var(--primary-color);
 }
 
 .button-press:hover {
   transform: scale(1.05);
   transition: 0.3s;
+  box-shadow: var(--card-shadow);
+}
+
+.fs-2 {
+  font-size: 1.75rem;
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.animated-heading {
+  display: inline-block;
+  position: relative;
+  color: var(--primary-color);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animated-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--primary-color);
+  animation: growWidth 1.5s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes growWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 </style>

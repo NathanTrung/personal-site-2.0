@@ -1,4 +1,10 @@
 <script setup>
+import { useThemeStore } from '@/stores/theme'
+import { storeToRefs } from 'pinia'
+
+const themeStore = useThemeStore()
+const { isDark } = storeToRefs(themeStore)
+
 const projects = [
   {
     title: "WhizKidTrains",
@@ -53,113 +59,240 @@ const projects = [
 </script>
 
 <template>
-  <section class="wrapper overlay  my-5">
-    <h2 class="text-center font-x2 mt-5 mb-3">My Projects</h2>
-    <p class="text-center mb-5">
-      Explore the work I've done in Software Development, Web Development, Game Development, and A.I.
-    </p>
-    <div class="row">
-      <div
-        class="col-md-6 col-lg-4 mb-4"
-        v-for="(project, index) in projects"
-        :key="index"
-      >
-        <div class="card h-100 shadow-sm border-0 bg-dark-overlay">
-          <div class="card-img-wrapper">
-            <img :src="project.image" class="card-img-top" :alt="project.title" />
-          </div>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title text-dark">{{ project.title }}</h5>
-            <p class="card-text text-dark flex-grow-1">{{ project.description }}</p>
-            <div class="mt-3">
-              <a
-                v-if="project.github"
-                :href="project.github"
-                target="_blank"
-                class="btn btn-sm btn-outline-dark me-2"
-              >
-                GitHub
-              </a>
-              <a
-                v-if="project.linkedin"
-                :href="project.linkedin"
-                target="_blank"
-                class="btn btn-sm btn-outline-dark me-2"
-              >
-                LinkedIn
-              </a>
-              <a
-                v-if="project.url"
-                :href="project.url"
-                target="_blank"
-                class="btn btn-sm btn-outline-dark"
-              >
-                Website
-              </a>
+  <div class="main">
+    <div class="wrapper bg-light-custom py-4 mt-0 mb-0">
+      <div class="container py-2">
+        <div class="text-center mb-4">
+          <h2 class="fs-2 fw-bold">My Projects</h2>
+          <p class="text-muted">Explore the work I've done in Software Development, Web Development, Game Development, and A.I.</p>
+        </div>
+        <div class="row">
+          <div
+            class="col-md-6 col-lg-4 mb-4"
+            v-for="(project, index) in projects"
+            :key="index"
+          >
+            <div class="card h-100 shadow-sm">
+              <div class="card-img-wrapper">
+                <img :src="project.image" class="card-img-top" :alt="project.title" />
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text flex-grow-1">{{ project.description }}</p>
+                <div class="mt-3">
+                  <a
+                    v-if="project.github"
+                    :href="project.github"
+                    target="_blank"
+                    class="btn btn-sm btn-outline-primary button-press"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    v-if="project.linkedin"
+                    :href="project.linkedin"
+                    target="_blank"
+                    class="btn btn-sm btn-outline-primary button-press"
+                  >
+                    LinkedIn
+                  </a>
+                  <a
+                    v-if="project.url"
+                    :href="project.url"
+                    target="_blank"
+                    class="btn btn-sm btn-outline-primary button-press"
+                  >
+                    Website
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <style scoped>
+.main {
+  padding-top: 0;
+  margin-top: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 .card-img-wrapper {
   width: 100%;
   height: 200px;
   overflow: hidden;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--card-bg);
 }
 
+/* White background for images in dark mode */
+.dark-theme .card-img-wrapper {
+  background-color: white;
+}
 
 .card-img-top {
-  width: 100%; /* Ensure image spans the full width of the wrapper */
-  height: auto; /* Let the image maintain its natural aspect ratio */
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background-color: transparent;
 }
 
-.bg-dark-overlay {
-  background-color: black;  /* Darker semi-transparent black for the card */
-  color: white;  /* Light text for contrast */
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--card-shadow);
+}
+
+.card:hover::before {
+  transform: translateX(100%);
+}
+
+/* Smooth image zoom on hover */
+.card-img-wrapper {
+  overflow: hidden;
+}
+
+.card-img-top {
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
 }
 
 .card-title, .card-text {
-  color: white !important; /* Light text */
+  color: var(--text-color);
 }
 
 .card-body {
   padding: 1.5rem;
 }
 
-.card-btns a {
-  color: white !important; /* Ensure the buttons have a light color on dark background */
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
-.card-btns .btn-outline-light {
-  border-color: white !important;
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  border-color: var(--primary-color);
 }
 
-.card-btns .btn-outline-light:hover {
-  background-color: white !important;
-  color: #333;
-}
-h1, h3, h6, .AnimatedHeading {
-  color: #56d736;
-}
-.overlay {
-  background-color: rgba(0, 0, 0, 0.7) !important; /* Apply semi-transparent black background */
-  color: #e0e0e0;
+h1, h2, h3, h6 {
+  color: var(--text-color);
 }
 
-a, h2 { 
-  color: #56d736;
-  border-color: #56d736;
+.bg-light-custom {
+  background-color: var(--nav-bg);
+  color: var(--text-color);
 }
 
-.card-img-top {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background-color: white;
+/* Light Background Section */
+.wrapper {
+  margin: 0 !important;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--border-color);
+  overflow: visible;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-color);
+  opacity: 0.8;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Make borders more definitive in light mode */
+:root:not(.dark-theme) .card {
+  border-width: 2px;
+  border-color: #d1d5db;
+}
+
+/* Adjust shadow for dark mode */
+.dark-theme .card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-press:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+/* Title styling for consistency */
+.font-x2, .display-6 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.fs-2 {
+  font-size: 1.75rem;
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+/* Fix for button layout */
+.mt-3 {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
 </style>
