@@ -34,7 +34,7 @@ const timeline = [
     title: 'VCE Completed',
     subtitle: 'St Albans Secondary College',
     description:
-      'Focused on Legal Studies, Economics, Business, and Physical Education. These subjects enhanced my analytical skills and fostered strategic thinking.',
+      'Graduated with distinction in Legal Studies, Economics, Business Management, and Physical Education. Developed critical thinking skills and a foundation in business principles.',
     date: '2020',
     institution: 'stalbans'
   },
@@ -43,7 +43,7 @@ const timeline = [
     title: 'Bachelor of Business/IT',
     subtitle: 'Monash University',
     description:
-      'I gained skills in Financial Accounting, Microeconomics, and Programming, laying a strong foundation for my future in technology and business.',
+      'Completed fundamental courses in Financial Accounting, Microeconomics, and Object-Oriented Programming. This dual focus provided me with a unique perspective connecting business needs with technical solutions.',
     date: '2021',
     institution: 'monash'
   },
@@ -52,16 +52,16 @@ const timeline = [
     title: 'Bachelor of Computer Science',
     subtitle: 'Swinburne University',
     description:
-      'I deepened my knowledge of technology and software development, strengthening my coding skills and exploring network administration.',
+      'Shifted focus to pursue a deeper technical education in Computer Science. Core coursework included Data Structures & Algorithms, Software Engineering Principles, Database Systems, and Network Security.',
     date: '2022 - 2025',
     institution: 'swinburne'
   },
   {
     icon: Swinburne,
-    title: 'Penultimate Year',
+    title: 'Advanced Studies',
     subtitle: 'Swinburne University',
     description:
-      'Focused on AI, Data Structures & Algorithms, Game development as well as working on a year long capstone project, WhizKidTrains, while enhancing my web development skills.',
+      'Currently focusing on Artificial Intelligence, Advanced Algorithms, Cloud Computing, and Full-Stack Development. Leading a team for my capstone project "WhizKidTrains" while expanding my web development portfolio with various personal projects.',
     date: '2024',
     institution: 'swinburne'
   }

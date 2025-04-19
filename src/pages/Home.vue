@@ -29,7 +29,7 @@
             </p>
           </div>
 
-          <div class="col-md-6 text-center">
+          <div class="col-md-6 text-center image-container">
             <router-link to="/about">
               <img :src="Nathan" alt="Chibi Nathan" class="img-fluid button-press chibi" />
             </router-link>
@@ -483,31 +483,51 @@ h4 {
 /* Add responsive adjustments */
 @media (max-width: 768px) {
   #intro {
-    padding-top: 4.5rem; /* Increased padding for medium screens */
+    padding-top: 6.5rem; /* Increased padding for medium screens */
   }
   
   .pt-4 {
-    padding-top: 4.5rem !important; /* Increase padding for headings */
+    padding-top: 6.5rem !important; /* Increase padding for headings */
   }
   
   .name-heading {
-    margin-top: 4.5rem;
+    margin-top: 6.5rem;
     padding-top: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   #intro {
-    padding-top: 5rem; /* More padding for small screens */
+    padding-top: 7rem; /* More padding for small screens */
   }
   
   .pt-4 {
-    padding-top: 5rem !important; /* Increase padding for headings */
+    padding-top: 7rem !important; /* Increase padding for headings */
   }
   
   .name-heading {
-    margin-top: 3rem;
+    margin-top: 5rem;
     padding-top: 1.5rem;
+  }
+}
+
+/* Specific adjustments for 546px width and above */
+
+  .image-container {
+    margin-top: 3rem; /* Push image down at specific breakpoint */
+    padding-top: 1.5rem;
+  }
+  
+  .chibi {
+    max-width: 90%; /* Slightly reduce image size */
+    margin-top: 1.5rem;
+  }
+
+
+/* Additional adjustment for tablet-sized screens */
+@media (min-width: 546px) and (max-width: 991px) {
+  .image-container {
+    margin-top: 4rem; /* More spacing for tablet screens */
   }
 }
 

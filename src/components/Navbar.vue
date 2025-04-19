@@ -210,7 +210,7 @@ onBeforeUnmount(() => {
 .Logo {
   height: auto;
   width: clamp(150px, 20vw, 250px);
-  max-height: 60px;
+  max-height: 80px;
 }
 
 a {
