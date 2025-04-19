@@ -342,7 +342,7 @@ const onSubmit = handleSubmit(async (values) => {
   right: -10px;
   bottom: -10px;
   border-radius: 15px;
-  background: linear-gradient(45deg, var(--primary-color), transparent);
+  
   opacity: 0;
   z-index: -1;
   transition: opacity 0.5s ease;
