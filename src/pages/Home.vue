@@ -10,7 +10,7 @@
               Computer Science Student
               <font-awesome-icon :icon="['fas', 'at']" />
               <br />
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center mt-2">
                 Swinburne University of Technology
                 <a href="https://www.swinburne.edu.au/" class="swinburne-logo-container button-press ms-2">
                   <span class="visually-hidden">Swinburne University Logo</span>
@@ -356,8 +356,7 @@ a:hover, .btn-outline:hover {
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .swinburne-logo-container:focus, .swinburne-logo-container:hover {
@@ -493,6 +492,14 @@ h4 {
   .name-heading {
     margin-top: 6.5rem;
     padding-top: 1rem;
+  }
+
+  .swinburne-logo-container {
+    margin-top: 5px;
+  }
+  
+  h4 .d-flex {
+    margin-top: 8px !important;
   }
 }
 

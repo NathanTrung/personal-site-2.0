@@ -5,13 +5,15 @@
          :class="{
            'animate-left': index % 2 === 0, 
            'animate-right': index % 2 !== 0,
-           'monash-container': entry.institution === 'monash'
+           'monash-container': entry.institution === 'monash',
+           'swinburne-container': entry.institution === 'swinburne'
          }">
       <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center">
-        <img :src="entry.icon" 
-             class="mb-3 mb-md-0 me-md-3 timeline-icon" 
-             :class="{'monash-logo': entry.institution === 'monash'}" 
-             style="width: 60px; height: auto;" />
+        <div class="icon-container">
+          <img :src="entry.icon" 
+               class="mb-3 mb-md-0 me-md-3 timeline-icon" 
+               :class="{'monash-logo': entry.institution === 'monash'}" />
+        </div>
         <div class="timeline-content">
           <h4 class="fw-bold">{{ entry.title }}</h4>
           <h5 class="text-muted">{{ entry.subtitle }}</h5>
@@ -86,7 +88,7 @@ const timeline = [
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 30px;
+  left: 40px;
   width: 3px;
   background: var(--primary-color);
   transform: translateX(-50%);
@@ -105,7 +107,7 @@ const timeline = [
 
 .timeline-element {
   position: relative;
-  margin-left: 60px;
+  margin-left: 70px;
   padding: 15px;
   border-radius: 8px;
   background-color: var(--card-bg);
@@ -127,6 +129,8 @@ const timeline = [
   background-color: var(--primary-color);
   box-shadow: 0 0 0 4px var(--bg-color);
   animation: pulseCircle 2s infinite;
+  transform: translateX(0);
+  z-index: 3;
 }
 
 @keyframes pulseCircle {
@@ -146,12 +150,29 @@ const timeline = [
   box-shadow: var(--card-shadow-hover);
 }
 
+.icon-container {
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+  margin-left: 20px;
+  position: relative;
+}
+
 .timeline-icon {
   transition: transform 0.5s ease;
+  width: 70px !important;
+  height: auto !important;
 }
 
 .timeline-element:hover .timeline-icon {
   transform: rotate(10deg) scale(1.1);
+}
+
+.timeline-content {
+  flex: 1;
+  padding-left: 10px;
 }
 
 .timeline-content h4 {
@@ -204,15 +225,29 @@ const timeline = [
 
 @media (max-width: 768px) {
   .timeline::before {
-    left: 20px;
+    left: 30px;
   }
   
   .timeline-element {
-    margin-left: 40px;
+    margin-left: 50px;
   }
   
   .timeline-element::before {
     left: -30px;
+  }
+  
+  .icon-container {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+  
+  .swinburne-container {
+    padding-top: 20px;
+    margin-top: 15px;
+  }
+  
+  .swinburne-container::before {
+    top: 45px;
   }
 }
 
@@ -222,7 +257,6 @@ const timeline = [
   height: auto !important;
   transform-origin: center;
   transition: transform 0.5s ease;
-  margin-right: 1rem !important;
   position: relative;
   z-index: 2;
 }
@@ -239,5 +273,15 @@ const timeline = [
 
 .monash-container {
   padding-left: 5px; /* Slightly adjust padding to account for larger logo */
+}
+
+/* Special container for Swinburne timeline entry */
+.swinburne-container {
+  padding-top: 15px;
+  margin-top: 10px;
+}
+
+.swinburne-container::before {
+  top: 40px;
 }
 </style>
