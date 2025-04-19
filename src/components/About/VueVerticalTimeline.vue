@@ -15,10 +15,10 @@
                :class="{'monash-logo': entry.institution === 'monash'}" />
         </div>
         <div class="timeline-content">
-          <h4 class="fw-bold">{{ entry.title }}</h4>
-          <h5 class="text-muted">{{ entry.subtitle }}</h5>
-          <p class="mb-1">{{ entry.description }}</p>
-          <small class="text-muted">{{ entry.date }}</small>
+          <h4 class="fw-bold mb-1">{{ entry.title }}</h4>
+          <h5 class="text-muted mb-2">{{ entry.subtitle }}</h5>
+          <p class="mb-2">{{ entry.description }}</p>
+          <small class="text-muted d-block">{{ entry.date }}</small>
         </div>
       </div>
     </div>
@@ -225,11 +225,12 @@ const timeline = [
 
 @media (max-width: 768px) {
   .timeline::before {
-    left: 30px;
+    left: 25px;
   }
   
   .timeline-element {
-    margin-left: 50px;
+    margin-left: 45px;
+    padding: 15px 10px;
   }
   
   .timeline-element::before {
@@ -239,6 +240,7 @@ const timeline = [
   .icon-container {
     justify-content: flex-start;
     margin-left: 0;
+    min-width: 90px;
   }
   
   .swinburne-container {
@@ -248,6 +250,52 @@ const timeline = [
   
   .swinburne-container::before {
     top: 45px;
+  }
+  
+  .timeline-content {
+    padding-left: 5px;
+  }
+  
+  .d-flex {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  
+  .timeline-icon {
+    margin-bottom: 10px !important;
+  }
+  
+  .monash-logo {
+    width: 80px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .timeline::before {
+    left: 20px;
+  }
+  
+  .timeline-element {
+    margin-left: 35px;
+    padding: 12px 8px;
+  }
+  
+  .timeline-element::before {
+    left: -25px;
+    width: 15px;
+    height: 15px;
+  }
+  
+  .timeline-content h4 {
+    font-size: 1.1rem;
+  }
+  
+  .timeline-content h5 {
+    font-size: 0.9rem;
+  }
+  
+  .timeline-content p {
+    font-size: 0.85rem;
   }
 }
 
