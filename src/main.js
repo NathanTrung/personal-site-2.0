@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import './assets/main.css'
+import './assets/animated-backgrounds.css'
 
 // ✅ Bootstrap CSS & JS
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -14,15 +15,9 @@ import { faAt, faAtom, faCubes, faKeyboard, faBars, faSun, faMoon } from '@forta
 
 library.add(faAt, faAtom, faCubes, faKeyboard, faBars, faSun, faMoon)
 
-// ✅ Create Vue App
+// ✅ Create and mount app
 const app = createApp(App)
-const pinia = createPinia()
 
-// ✅ Global Font Awesome Component
 app.component('font-awesome-icon', FontAwesomeIcon)
-
-// ✅ Use Pinia
-app.use(pinia)
-
-// ✅ Mount App
+app.use(createPinia())
 app.mount('#app')
