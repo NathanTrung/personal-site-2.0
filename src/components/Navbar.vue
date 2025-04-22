@@ -24,7 +24,7 @@
         <button class="theme-toggle" @click="toggleTheme" aria-label="Toggle theme">
           <FontAwesomeIcon :icon="isDark ? faSun : faMoon" />
         </button>
-        <button class="navbar-toggler" @click="toggleMenu" ref="menuButtonRef" type="button">
+        <button class="navbar-toggler" @click="toggleMenu" ref="menuButtonRef" type="button" aria-label="Toggle navigation menu">
           <i class="fas fa-bars menuicon"></i>
         </button>
       </div>

@@ -6,7 +6,7 @@
         <div class="row align-items-center">
           <div class="col-md-6">
             <h1 class="text-uppercase pt-4 fw-bold name-heading">Nathan Trung</h1>
-            <h4 class="fw-normal">
+            <h2 class="fw-normal h4-style">
               Computer Science Student
               <font-awesome-icon :icon="['fas', 'at']" />
               <br />
@@ -16,7 +16,7 @@
                   <span class="visually-hidden">Swinburne University Logo</span>
                 </a>
               </div>
-            </h4>
+            </h2>
             <AnimatedHeading :text="'Hi There! '" :imageSrc="isDark ? WavingDark : WavingLight" :delay="0.5" class="AnimatedHeading" />
             <p>
               Welcome to my personal website! I am currently pursuing a degree in Computer Science at Swinburne University. With strong proficiencies in Software & Web Development, Network administration, DevOps, and Game Development using Unity, I am dedicated to enhancing the Software Development Lifecycle.
@@ -31,7 +31,7 @@
 
           <div class="col-md-6 text-center image-container">
             <router-link to="/about">
-              <img :src="Nathan" alt="Chibi Nathan" class="img-fluid button-press chibi" />
+              <img :src="Nathan" alt="Chibi Nathan" class="img-fluid button-press chibi" width="300" height="450" />
             </router-link>
           </div>
         </div>
@@ -47,19 +47,19 @@
         <div class="row justify-content-center">
           <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
             <div class="logo-box mb-3">
-              <img :src="isDark ? Partner1Dark : Partner1Light" alt="LinkedIn" class="logo-img linkedin-logo" />
+              <img :src="isDark ? Partner1Dark : Partner1Light" alt="LinkedIn" class="logo-img linkedin-logo" width="80" height="80" />
             </div>
             <a class="btn btn-outline-primary button-press" href="https://www.linkedin.com/in/nathan-trung/" target="_blank">LinkedIn</a>
           </div>
           <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
             <div class="logo-box mb-3">
-              <img :src="isDark ? Partner2Dark : Partner2Light" alt="GitHub" class="logo-img" />
+              <img :src="isDark ? Partner2Dark : Partner2Light" alt="GitHub" class="logo-img" width="80" height="80" />
             </div>
             <a class="btn btn-outline-primary button-press" href="https://github.com/NathanTrung" target="_blank">GitHub</a>
           </div>
           <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
             <div class="logo-box mb-3">
-              <img :src="isDark ? Partner3Dark : Partner3Light" alt="Facebook" class="logo-img" />
+              <img :src="isDark ? Partner3Dark : Partner3Light" alt="Facebook" class="logo-img" width="80" height="80" />
             </div>
             <a class="btn btn-outline-primary button-press" href="https://www.facebook.com/NaifanTrung" target="_blank">Facebook</a>
           </div>
@@ -540,5 +540,11 @@ h4 {
 
 .name-heading {
   margin-top: 1rem;
+}
+
+.h4-style {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
 </style>

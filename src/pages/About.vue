@@ -22,7 +22,7 @@
           </div>
           <div class="col-md-6 text-center">
             <a href="#" @click.prevent="openModal">
-              <img :src="MeImage" alt="Me" class="img-fluid resume-image button-press" />
+              <img :src="MeImage" alt="Me" class="img-fluid resume-image button-press" width="300" height="400" />
             </a>
           </div>
         </div>

@@ -10,7 +10,7 @@
       >
         {{ char === ' ' ? '\u00A0' : char }}
       </span>
-      <img v-if="imageSrc" :src="imageSrc" alt="Wave Emoji" class="wave-img ms-2" />
+      <img v-if="imageSrc" :src="imageSrc" alt="Wave Emoji" class="wave-img ms-2" width="32" height="32" />
     </div>
   </template>
   

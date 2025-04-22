@@ -12,7 +12,10 @@
         <div class="icon-container">
           <img :src="entry.icon" 
                class="mb-3 mb-md-0 me-md-3 timeline-icon" 
-               :class="{'monash-logo': entry.institution === 'monash'}" />
+               :class="{'monash-logo': entry.institution === 'monash'}"
+               :alt="entry.institution === 'monash' ? 'Monash University Logo' : 
+                     entry.institution === 'swinburne' ? 'Swinburne University Logo' : 
+                     'St Albans Secondary College Logo'" />
         </div>
         <div class="timeline-content">
           <h4 class="fw-bold mb-1">{{ entry.title }}</h4>

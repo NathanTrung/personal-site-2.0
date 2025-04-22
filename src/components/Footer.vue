@@ -161,6 +161,14 @@
     width: 100%;
   }
 
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
   .footer-logo img {
     max-width: min(200px, 100%);
     height: auto;

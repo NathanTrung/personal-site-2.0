@@ -74,7 +74,7 @@ const projects = [
           >
             <div class="card h-100 shadow-sm">
               <div class="card-img-wrapper">
-                <img :src="project.image" class="card-img-top" :alt="project.title" />
+                <img :src="project.image" class="card-img-top" :alt="project.title" width="240" height="180" />
               </div>
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{ project.title }}</h5>
