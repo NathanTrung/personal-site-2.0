@@ -15,11 +15,21 @@ import { faAt, faAtom, faCubes, faKeyboard, faBars, faSun, faMoon } from '@forta
 
 library.add(faAt, faAtom, faCubes, faKeyboard, faBars, faSun, faMoon)
 
+// ✅ Create Pinia store
+const pinia = createPinia()
+
 // ✅ Create and mount app
 const app = createApp(App)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
-app.use(createPinia())
+app.use(pinia)
+
+// Initialize theme before mounting
+import { useThemeStore } from './stores/theme'
+const themeStore = useThemeStore()
+themeStore.initTheme()
+
+// Mount the app
 app.mount('#app')
 
 // Optimize resource loading

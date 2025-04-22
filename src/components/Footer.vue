@@ -4,7 +4,8 @@
       <div class="footer-top">
         <div class="footer-logo">
             <a href="#home" @click.prevent="scrollToSection('home')">
-              <img :src="isDark ? RazorWhite : Razor" alt="Logo" class="Logo2 button-press" loading="lazy" />
+              <img v-if="isDark !== undefined" :src="isDark ? RazorWhite : Razor" alt="Logo" class="logo-image button-press" loading="eager" />
+              <img v-else :src="Razor" alt="Logo" class="logo-image button-press" loading="eager" />
             </a>
         </div>
   
@@ -77,6 +78,14 @@
   const currentYear = computed(() => new Date().getFullYear())
   let intervalId = null
 
+  // Preload images to prevent flash of missing logo
+  const preloadImages = () => {
+    const lightImg = new Image();
+    const darkImg = new Image();
+    lightImg.src = Razor;
+    darkImg.src = RazorWhite;
+  }
+
   const formatTime = (date) => {
     return date.toLocaleTimeString('en-US', { 
       hour: '2-digit',
@@ -119,6 +128,12 @@
   }
   
   onMounted(() => {
+    // Initialize the theme store
+    themeStore.initTheme()
+    
+    // Preload images
+    preloadImages()
+    
     currentDate.value = new Date()
     intervalId = setInterval(() => {
       currentDate.value = new Date()
@@ -169,13 +184,17 @@
     width: 100%;
   }
 
-  .footer-logo img {
+  .footer-logo img,
+  .logo-image {
     max-width: min(200px, 100%);
     height: auto;
     transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto;
   }
 
-  .footer-logo img:hover {
+  .footer-logo img:hover,
+  .logo-image:hover {
     transform: scale(1.05);
   }
 
