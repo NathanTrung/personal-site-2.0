@@ -30,6 +30,7 @@
               <li><a href="https://www.instagram.com/nathantrung/" class="button-press" target="_blank" rel="noopener noreferrer">Instagram</a></li>
               <li><a href="https://www.linkedin.com/in/nathan-trung/" class="button-press" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a href="https://x.com/NaifTrung" class="button-press" target="_blank" rel="noopener noreferrer">X</a></li>
+              <li><a href="https://linktr.ee/nathantrung" class="button-press" target="_blank" rel="noopener noreferrer">Linktree</a></li>
             </ul>
           </nav>
         </div>
@@ -44,6 +45,7 @@
             <li><a href="https://www.instagram.com/nathantrung/" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FontAwesomeIcon :icon="faInstagram" /></a></li>
             <li><a href="https://www.linkedin.com/in/nathan-trung/" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FontAwesomeIcon :icon="faLinkedin" /></a></li>
             <li><a href="https://x.com/NaifTrung" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><FontAwesomeIcon :icon="faXTwitter" /></a></li>
+            <li><a href="https://linktr.ee/nathantrung" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="Linktree"><img :src="isDark ? LinktreeDark : LinktreeLight" alt="Linktree" class="social-icon-img" /></a></li>
           </ul>
         </nav>
       </div>
@@ -68,6 +70,8 @@
   import { faFacebook, faLinkedin, faInstagram, faGithub, faXTwitter } from '@fortawesome/free-brands-svg-icons'
   import Razor from '@/assets/razor.png'
   import RazorWhite from '@/assets/razor-white.png'
+  import LinktreeLight from '@/assets/Home/Linktree.png'
+  import LinktreeDark from '@/assets/Home/Linktree-white.png'
   import { useThemeStore } from '@/stores/theme'
   import { storeToRefs } from 'pinia'
   
@@ -291,6 +295,22 @@
 
   .social-icon:hover {
     color: var(--primary-color);
+    transform: translateY(-3px);
+    background-color: var(--card-bg);
+  }
+
+  .social-icon-img {
+    width: clamp(2rem, 3.5vw, 2.5rem);
+    height: clamp(2rem, 3.5vw, 2.5rem);
+    object-fit: contain;
+    transition: all 0.3s ease;
+    padding: 6px;
+    border-radius: 50%;
+    background-color: var(--nav-bg);
+  }
+
+  .social-icon:hover .social-icon-img,
+  a:hover .social-icon-img {
     transform: translateY(-3px);
     background-color: var(--card-bg);
   }

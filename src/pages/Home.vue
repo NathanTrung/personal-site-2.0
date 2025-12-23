@@ -7,7 +7,7 @@
           <div class="col-md-6">
             <h1 class="text-uppercase pt-4 fw-bold name-heading">Nathan Trung</h1>
             <h2 class="fw-normal h4-style">
-              Computer Science Student
+              Computer Science Graduate
               <font-awesome-icon :icon="['fas', 'at']" />
               <br />
               <div class="d-flex align-items-center mt-2">
@@ -19,20 +19,20 @@
             </h2>
             <AnimatedHeading :text="'Hi There! '" :imageSrc="isDark ? WavingDark : WavingLight" :delay="0.5" class="AnimatedHeading" />
             <p>
-              Welcome to my personal website! I am currently pursuing a degree in Computer Science at Swinburne University. With strong proficiencies in Software & Web Development, Network administration, DevOps, and Game Development using Unity, I am dedicated to enhancing the Software Development Lifecycle.
+              Welcome to my personal website. I am a Computer Science graduate from Swinburne University, with strong expertise in software and web development, network administration, DevOps, and game development using Unity. I am committed to building robust, scalable solutions and continuously improving the software development lifecycle through thoughtful design, automation, and best practices.
             </p>
             <p>
               My focus is on Object-Oriented Programming (OOP) principles, emphasizing encapsulation, inheritance, and polymorphism to create modular, maintainable, and efficient software solutions. I have a strong foundation in Data Structures and Design Patterns, enabling me to build scalable and robust applications.
             </p>
             <p>
-              <router-link class="btn btn-outline button-press" to="/projects">Explore My Projects &raquo;</router-link>
+              <a href="#projects" class="btn btn-outline button-press">Explore My Projects &raquo;</a>
             </p>
           </div>
 
           <div class="col-md-6 text-center image-container">
-            <router-link to="/about">
+            <a href="#about">
               <img :src="Nathan" alt="Chibi Nathan" class="img-fluid button-press chibi" width="300" height="450" />
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -45,23 +45,29 @@
           <p class="text-muted">Let's Collaborate!</p>
         </div>
         <div class="row justify-content-center">
-          <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
+          <div class="col-md-3 col-sm-6 mb-4 d-flex flex-column align-items-center">
             <div class="logo-box mb-3">
               <img :src="isDark ? Partner1Dark : Partner1Light" alt="LinkedIn" class="logo-img linkedin-logo" width="80" height="80" />
             </div>
             <a class="btn btn-outline-primary button-press" href="https://www.linkedin.com/in/nathan-trung/" target="_blank">LinkedIn</a>
           </div>
-          <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
+          <div class="col-md-3 col-sm-6 mb-4 d-flex flex-column align-items-center">
             <div class="logo-box mb-3">
               <img :src="isDark ? Partner2Dark : Partner2Light" alt="GitHub" class="logo-img" width="80" height="80" />
             </div>
             <a class="btn btn-outline-primary button-press" href="https://github.com/NathanTrung" target="_blank">GitHub</a>
           </div>
-          <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
+          <div class="col-md-3 col-sm-6 mb-4 d-flex flex-column align-items-center">
             <div class="logo-box mb-3">
               <img :src="isDark ? Partner3Dark : Partner3Light" alt="Facebook" class="logo-img" width="80" height="80" />
             </div>
             <a class="btn btn-outline-primary button-press" href="https://www.facebook.com/NaifanTrung" target="_blank">Facebook</a>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4 d-flex flex-column align-items-center">
+            <div class="logo-box mb-3">
+              <img :src="isDark ? Partner4Dark : Partner4Light" alt="Linktree" class="logo-img" width="80" height="80" />
+            </div>
+            <a class="btn btn-outline-primary button-press" href="https://linktr.ee/nathantrung" target="_blank">Linktree</a>
           </div>
         </div>
       </div>
@@ -190,9 +196,11 @@ import Nathan from '@/assets/Home/Nathan.png'
 import Partner1Light from '@/assets/Home/Linkedin.png'
 import Partner2Light from '@/assets/Home/Github.png'
 import Partner3Light from '@/assets/Home/Facebook.png'
+import Partner4Light from '@/assets/Home/Linktree.png'
 import Partner1Dark from '@/assets/Home/Linkedin-white.png'
 import Partner2Dark from '@/assets/Home/Github-white.png'
 import Partner3Dark from '@/assets/Home/Facebook-white.png'
+import Partner4Dark from '@/assets/Home/Linktree-white.png'
 import WavingDark from '@/assets/Home/hello-white.png'
 import WavingLight from '@/assets/Home/hello-black.png'
 import SwinburneLogo from '@/assets/Home/Swinburne.ico'

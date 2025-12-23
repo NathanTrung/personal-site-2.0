@@ -8,10 +8,13 @@
             <h1 class="text-uppercase fw-bold">About Me</h1>
             <p>I'm a Software Developer based in Melbourne, Australia.</p>
             <p>
-              Since 2021, I've been passionate about transforming complex challenges into elegant software solutions...
+              Since 2021, I’ve been passionate about transforming complex challenges into clean, efficient, and maintainable software solutions, with a strong focus on thoughtful design and long-term scalability.
             </p>
             <p>
-              Before I discovered my passion for developing software, I was immersed in the study of Business...
+              Before discovering my passion for software development, I pursued studies in Business, which provided a solid foundation in analytical thinking, problem-solving, and understanding real-world requirements—skills that continue to inform my technical approach today.
+            </p>
+            <p>
+              Outside of professional development, I actively explore Internet of Things and homelabbing projects, with hands-on experience in networking, hardware installation, and system configuration. These interests reinforce my practical understanding of infrastructure, reliability, and performance, complementing my work as a software developer.
             </p>
             <p class="resume-prompt d-flex flex-wrap align-items-center">
               <span>Click</span> <span class="ms-1">My</span> <span class="ms-1">Photo</span>

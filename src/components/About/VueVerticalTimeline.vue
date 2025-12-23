@@ -57,7 +57,7 @@ const timeline = [
     title: 'Bachelor of Computer Science',
     subtitle: 'Swinburne University',
     description:
-      'Shifted focus to pursue a deeper technical education in Computer Science. Core coursework included Data Structures & Algorithms, Software Engineering Principles, Database Systems, and Network Security.',
+      'Shifted focus to pursue a deeper technical education in Computer Science. Core coursework included Data Structures & Algorithms, Software Engineering Principles, Database Systems, and Network Security. Led the capstone project “WhizKidTrains,” providing technical leadership and delivery, while continuing to expand a professional web development portfolio through a range of personal projects.',
     date: '2022 - 2025',
     institution: 'swinburne'
   },
@@ -66,8 +66,8 @@ const timeline = [
     title: 'Advanced Studies',
     subtitle: 'Swinburne University',
     description:
-      'Currently focusing on Artificial Intelligence, Advanced Algorithms, Cloud Computing, and Full-Stack Development. Leading a team for my capstone project "WhizKidTrains" while expanding my web development portfolio with various personal projects.',
-    date: '2024',
+      'Graduated in 2025 with a focus on Artificial Intelligence, advanced algorithms, cloud computing, and full-stack development. Final-year units concentrated on research in trajectory analysis leveraging Large Language Models, alongside in-depth interface design and development. ',
+    date: '2025',
     institution: 'swinburne'
   }
 ]
