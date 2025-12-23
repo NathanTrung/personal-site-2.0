@@ -1,0 +1,9 @@
+# robots.txt for nathantrung.com
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.nathantrung.com/sitemap.xml
+
+# Specify crawl delay for heavy resources
+Crawl-delay: 10 
