@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Nathan Trung - Computer Science Student Portfolio">
+    <title>Nathan Trung - Portfolio</title>
+    
+    <!-- DNS prefetching for external resources -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/assets/index-A03XuR_y.css" as="style">
+    <link rel="preload" href="/assets/index-DT3rFg3g.js" as="script">
+    <link rel="preload" href="/assets/Nathan-ClyVyCwT.png" as="image" fetchpriority="high">
+    
+    <!-- Critical CSS inline -->
+    <style>
+      /* Critical CSS for above-the-fold content */
+      body {margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f8f9fa;}
+      .wrapper {position: relative; overflow: hidden; z-index: 1;}
+      .wrapper::before {content: ''; position: absolute; z-index: -1; top: -50%; left: -50%; right: -50%; bottom: -50%; background-size: 40px 40px; animation: moveGrid 15s linear infinite; will-change: transform;}
+      @keyframes moveGrid {0% {transform: translate(0, 0);} 100% {transform: translate(-40px, -40px);}}
+      .navbar {padding: 1rem 0; transition: all 0.3s ease;}
+      .container {width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; max-width: 1140px;}
+    </style>
+    
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="/assets/index-A03XuR_y.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/index-A03XuR_y.css"></noscript>
+    
+    <!-- Defer third-party CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Defer JavaScript -->
+    <script defer src="/assets/index-DT3rFg3g.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Google Tag Manager - load after page content -->
+    <script>
+      // Delay analytics loading
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const script = document.createElement('script');
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-HFM2HN0JVK';
+          script.async = true;
+          document.head.appendChild(script);
+          
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HFM2HN0JVK', {
+            'send_page_view': false // Disable initial pageview to reduce impact
+          });
+          // Send pageview after delay
+          setTimeout(function() {
+            gtag('event', 'page_view');
+          }, 5000);
+        }, 3000);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

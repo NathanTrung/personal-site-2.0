@@ -1,0 +1,138 @@
+/* Optimized Animated Backgrounds for Components */
+
+/* Common animation properties */
+.wrapper:not(footer .wrapper) {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  will-change: transform;
+}
+
+/* Background animation elements - optimized for performance */
+.wrapper:not(footer .wrapper)::before,
+.wrapper:not(footer .wrapper)::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  transition: opacity 0.5s ease, background-color 0.5s ease;
+  will-change: transform, opacity;
+}
+
+/* Common background animation for all sections except footer */
+.wrapper:not(footer .wrapper)::before {
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--grid-color, rgba(52, 152, 219, 0.03)) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color, rgba(52, 152, 219, 0.03)) 1px, transparent 1px);
+  animation: moveGrid 15s linear infinite;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.wrapper:not(footer .wrapper)::after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, var(--glow-color, rgba(52, 152, 219, 0.07)) 0%, transparent 25%),
+    radial-gradient(circle at 70% 80%, var(--glow-color, rgba(52, 152, 219, 0.05)) 0%, transparent 25%);
+}
+
+/* Animation definitions */
+@keyframes moveGrid {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-40px, -40px);
+  }
+}
+
+/* Timeline animations */
+.timeline::before {
+  z-index: 2 !important;
+  animation: pulseTimeline 4s ease-in-out infinite !important;
+}
+
+.timeline-element::before {
+  z-index: 3 !important;
+  animation: pulseDot 3s ease-in-out infinite !important;
+}
+
+/* Optimized animations with reduced complexity */
+@keyframes pulseTimeline {
+  0%, 100% { box-shadow: 0 0 8px var(--timeline-glow, rgba(52, 152, 219, 0.5)); }
+  50% { box-shadow: 0 0 15px var(--timeline-glow, rgba(52, 152, 219, 0.8)); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 4px var(--bg-color), 0 0 8px 6px var(--timeline-dot-glow, rgba(52, 152, 219, 0.3)); }
+  50% { box-shadow: 0 0 0 4px var(--bg-color), 0 0 12px 6px var(--timeline-dot-glow, rgba(52, 152, 219, 0.6)); }
+}
+
+@keyframes shadowPulse {
+  0%, 100% { transform: scaleX(0.9); opacity: 0.7; }
+  50% { transform: scaleX(1.1); opacity: 0.9; }
+}
+
+/* Enhanced element animations - optimized for performance */
+.chibi {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.chibi::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 10%;
+  width: 80%;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--shadow-color, rgba(0, 0, 0, 0.1));
+  filter: blur(5px);
+  animation: shadowPulse 5s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* Logo boxes and cards with optimized animations */
+.logo-box, .language-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark mode specific color variables */
+:root.dark-theme {
+  --grid-color: rgba(41, 128, 185, 0.05);
+  --glow-color: rgba(41, 128, 185, 0.1);
+  --timeline-glow: rgba(41, 128, 185, 0.6);
+  --timeline-dot-glow: rgba(41, 128, 185, 0.5);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --logo-glow: rgba(41, 128, 185, 0.2);
+  --card-highlight: rgba(41, 128, 185, 0.15);
+  --form-bg: rgba(30, 30, 30, 0.3);
+  --form-border: rgba(41, 128, 185, 0.3);
+  --form-focus: rgba(41, 128, 185, 0.35);
+  --form-focus-bg: rgba(30, 30, 30, 0.5);
+}
+
+/* Light mode specific color variables */
+:root:not(.dark-theme) {
+  --grid-color: rgba(52, 152, 219, 0.1); /* Darker lines in light mode */
+  --glow-color: rgba(52, 152, 219, 0.1);
+  --timeline-glow: rgba(52, 152, 219, 0.4);
+  --timeline-dot-glow: rgba(52, 152, 219, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --logo-glow: rgba(52, 152, 219, 0.15);
+  --card-highlight: rgba(52, 152, 219, 0.1);
+  --form-bg: rgba(255, 255, 255, 0.5);
+  --form-border: rgba(52, 152, 219, 0.2);
+  --form-focus: rgba(52, 152, 219, 0.25);
+  --form-focus-bg: rgba(255, 255, 255, 0.8);
+} 
