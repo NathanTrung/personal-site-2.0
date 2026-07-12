@@ -29,7 +29,7 @@
               <li><a href="https://github.com/NathanTrung" class="button-press" target="_blank" rel="noopener noreferrer">GitHub</a></li>
               <li><a href="https://www.instagram.com/nathantrung/" class="button-press" target="_blank" rel="noopener noreferrer">Instagram</a></li>
               <li><a href="https://www.linkedin.com/in/nathan-trung/" class="button-press" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="https://x.com/NaifTrung" class="button-press" target="_blank" rel="noopener noreferrer">X</a></li>
+              <li><a href="https://x.com/NathanTrungBCS" class="button-press" target="_blank" rel="noopener noreferrer">X</a></li>
               <li><a href="https://linktr.ee/nathantrung" class="button-press" target="_blank" rel="noopener noreferrer">Linktree</a></li>
             </ul>
           </nav>
@@ -44,7 +44,7 @@
             <li><a href="https://github.com/NathanTrung" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FontAwesomeIcon :icon="faGithub" /></a></li>
             <li><a href="https://www.instagram.com/nathantrung/" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FontAwesomeIcon :icon="faInstagram" /></a></li>
             <li><a href="https://www.linkedin.com/in/nathan-trung/" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FontAwesomeIcon :icon="faLinkedin" /></a></li>
-            <li><a href="https://x.com/NaifTrung" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><FontAwesomeIcon :icon="faXTwitter" /></a></li>
+            <li><a href="https://x.com/NathanTrungBCS" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><FontAwesomeIcon :icon="faXTwitter" /></a></li>
             <li><a href="https://linktr.ee/nathantrung" class="button-press social-icon" target="_blank" rel="noopener noreferrer" aria-label="Linktree"><img :src="isDark ? LinktreeDark : LinktreeLight" alt="Linktree" class="social-icon-img" /></a></li>
           </ul>
         </nav>
