@@ -7,11 +7,12 @@
           <div class="col-md-6">
             <h1 class="text-uppercase pt-4 fw-bold name-heading">Nathan Trung</h1>
             <h2 class="fw-normal h4-style">
-              Computer Science Graduate
+              Banking Consultant
               <font-awesome-icon :icon="['fas', 'at']" />
+              Suncorp Bank / ANZ Bank
               <br />
               <div class="d-flex align-items-center mt-2">
-                Swinburne University of Technology
+                Swinburne University of Technology — Computer Science Graduate
                 <a href="https://www.swinburne.edu.au/" class="swinburne-logo-container button-press ms-2">
                   <span class="visually-hidden">Swinburne University Logo</span>
                 </a>
@@ -19,13 +20,13 @@
             </h2>
             <AnimatedHeading :text="'Hi There! '" :imageSrc="isDark ? WavingDark : WavingLight" :delay="0.5" class="AnimatedHeading" />
             <p>
-              Welcome to my personal website. I am a Banking Consultant with a Computer Science background, focused on bridging financial services and technology.
+              Welcome to my personal website. I am a Banking Consultant at Suncorp Bank / ANZ Bank with a Computer Science background, focused on bridging financial services and technology.
             </p>
             <p>
-              Experienced in customer-facing banking operations, CRM systems, and compliance-driven environments, with a strong foundation in software development, systems analysis, and digital solutions.
+              Experienced in retail banking contact centre operations, including Term Deposits, Personal Secured Lending, Account Opening, and the personal account lifecycle from opening through maintenance to closure. I also support lending servicing, CRM-driven customer outcomes, and compliance-led environments.
             </p>
             <p>
-              Passionate about improving customer experience through technology, process optimization, and data-driven decision making within modern banking ecosystems.
+              Passionate about improving customer experience through clear communication, responsible lending and fraud awareness, and technology-enabled process improvement within modern banking ecosystems.
             </p>
             <p>
               <a href="#projects" class="btn btn-outline button-press">Explore My Projects &raquo;</a>
@@ -213,8 +214,26 @@
           </div>
           <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
             <div class="language-card">
-              <FontAwesomeIcon :icon="faCoins" class="card-icon" />
-              <span>Financial Products</span>
+              <FontAwesomeIcon :icon="faHourglassHalf" class="card-icon" />
+              <span>Term Deposits</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+            <div class="language-card">
+              <FontAwesomeIcon :icon="faHandHoldingDollar" class="card-icon" />
+              <span>Personal Secured Lending</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+            <div class="language-card">
+              <FontAwesomeIcon :icon="faFolderOpen" class="card-icon" />
+              <span>Account Opening</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+            <div class="language-card">
+              <FontAwesomeIcon :icon="faArrowsRotate" class="card-icon" />
+              <span>Account Lifecycle</span>
             </div>
           </div>
           <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
@@ -242,7 +261,10 @@ import {
   faBuildingColumns,
   faHandshake,
   faTriangleExclamation,
-  faCoins,
+  faHourglassHalf,
+  faHandHoldingDollar,
+  faFolderOpen,
+  faArrowsRotate,
   faIdCard,
   faGlobe,
 } from '@fortawesome/free-solid-svg-icons'

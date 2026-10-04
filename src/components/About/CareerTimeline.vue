@@ -31,7 +31,6 @@ import {
   faStore,
   faUserTie,
   faMugHot,
-  faLaptopCode,
   faBuildingColumns,
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -41,8 +40,8 @@ const timeline = [
     title: 'Crew Member',
     subtitle: "McDonald's",
     description:
-      'Prepared and assembled food to company standards in a fast-paced environment while maintaining strict food safety and hygiene practices. Managed kitchen stock levels and replenishment, building early experience in operational consistency, teamwork, and customer-focused service.',
-    date: 'Jul 2019 - Jun 2022',
+      'Prepared and assembled food to company standards while maintaining hygiene and food safety practices. Supported kitchen stock management and replenishment in a fast-paced, customer-focused environment.',
+    date: 'Jul 2019 - May 2021',
     company: 'mcdonalds',
   },
   {
@@ -50,7 +49,7 @@ const timeline = [
     title: 'Shift Manager',
     subtitle: "McDonald's",
     description:
-      'Led shift operations for teams of 8+ crew members, overseeing cash management, task allocation, and service quality. Drove drive-thru performance to a #1 national ranking in Australia with 100% order accuracy, including peak periods of 70 cars per hour.',
+      'Led shift operations including cash handling, crew coordination, and service quality. Helped drive drive-thru performance to a top national ranking in Australia with strong order accuracy and peak-period efficiency.',
     date: 'Jun 2022 - Mar 2023',
     company: 'mcdonalds',
   },
@@ -59,26 +58,17 @@ const timeline = [
     title: 'Barista',
     subtitle: 'Fresh Vibes Cafe',
     description:
-      'Part-time customer-facing role focused on coffee preparation, service quality, and cash handling. Supported daily operations through stock counting, inventory replenishment, and consistent delivery of a positive in-store customer experience.',
+      'Prepared and served specialty coffee in a local Altona North cafe. Managed stock counts, inventory replenishment, cash handling, and consistent customer service.',
     date: 'Mar 2023 - Feb 2026',
     company: 'freshvibes',
   },
   {
-    icon: faLaptopCode,
-    title: 'Full-Stack Developer',
-    subtitle: 'Alyy',
-    description:
-      'Built backend infrastructure on Firebase with Firestore schemas, real-time messaging, and connection management workflows. Delivered a cross-platform React Native/Expo application in TypeScript with onboarding flows, profile management, and responsive UI patterns across iOS and Android.',
-    date: 'Jul 2025 - Dec 2025',
-    company: 'alyy',
-  },
-  {
     icon: faBuildingColumns,
     title: 'Banking Consultant',
-    subtitle: 'Suncorp Bank',
+    subtitle: 'Suncorp Bank / ANZ Bank',
     description:
-      'Handles inbound customer enquiries across everyday banking, including account servicing, transactions, and account openings. Explains banking products clearly, resolves issues efficiently, and maintains strong compliance and risk awareness while building trust through empathy and active listening.',
-    date: 'Feb 2026 - Present',
+      'Manage inbound contact centre interactions across everyday banking and Level 1 lending servicing. Trained and authorised in Term Deposits, Account Opening, and Personal Secured Lending. Support the personal account lifecycle from opening through maintenance to closure, while applying RG206 compliance, customer verification, fraud awareness, and responsible lending controls.',
+    date: 'Mar 2026 - Present',
     company: 'suncorp',
   },
 ]
@@ -238,7 +228,6 @@ const timeline = [
 .timeline-element:nth-child(2) { --i: 2; }
 .timeline-element:nth-child(3) { --i: 3; }
 .timeline-element:nth-child(4) { --i: 4; }
-.timeline-element:nth-child(5) { --i: 5; }
 
 .suncorp-container {
   padding-top: 15px;

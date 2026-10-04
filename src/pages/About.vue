@@ -6,18 +6,18 @@
         <div class="row align-items-center">
           <div class="col-md-6 mb-4 mb-md-0">
             <h1 class="text-uppercase fw-bold">About Me</h1>
-            <p>Banking Consultant based in Melbourne, Australia, with a Computer Science background and a strong interest in the intersection of financial services and technology.</p>
+            <p>Banking Consultant at Suncorp Bank / ANZ Bank in Melbourne, Australia, with a Computer Science background and a strong interest in the intersection of financial services and technology.</p>
             <p>
-              Since 2021, I’ve been passionate about transforming complex challenges into clean, efficient, and maintainable software solutions, with a strong focus on thoughtful design and long-term scalability.
+              In my current role, I manage high-volume inbound customer interactions across everyday banking and lending, maintaining strong quality, compliance, and customer outcomes in a contact centre environment.
             </p>
             <p>
-              Experienced in customer-facing banking operations, CRM systems, and compliance-driven environments, supporting accurate, efficient, and customer-centric outcomes across a range of banking interactions.
+              I am trained and authorised in Term Deposits, Account Opening, and Personal Secured Lending, and I support the personal account lifecycle end-to-end — including account opening, ongoing maintenance, and account closure — alongside transaction support, digital banking, and customer verification controls.
             </p>
             <p>
-              Brings a strong foundation in systems thinking, software development, and analytical problem-solving, developed through academic study and practical technical experience. This enables a structured approach to understanding customer needs, improving processes, and working effectively within complex operational environments.
+              My work applies responsible lending, RG206 compliance, fraud awareness, and risk-based decision-making while explaining products and processes clearly to customers. I also bring software development and systems thinking from my Computer Science background to structured problem-solving and continuous improvement.
             </p>
             <p>
-              Actively engaged in exploring digital systems, infrastructure, and automation through personal technology projects, including networking, IoT, and homelabbing, reinforcing a practical understanding of how modern platforms and services operate end-to-end. Focused on continuous improvement, digital innovation, and contributing to technology-enabled transformation within the banking sector.
+              Outside of banking, I continue to explore digital systems, infrastructure, and automation through personal technology projects, reinforcing a practical understanding of how modern platforms and services operate end-to-end.
             </p>
             <p class="resume-prompt d-flex flex-wrap align-items-center">
               <span>Click</span> <span class="ms-1">My</span> <span class="ms-1">Photo</span>
@@ -37,6 +37,16 @@
 
     <ResumeModal :is-open="isModalOpen" @close="closeModal" :pdf-url="pdfURL" />
 
+    <!-- Professional Career Section -->
+    <div class="wrapper bg-light-custom py-4 mt-0 mb-0">
+      <div class="container py-2">
+        <div class="text-center mb-4">
+          <h3 class="fs-2 fw-bold animated-heading">My Professional Career</h3>
+        </div>
+        <CareerTimeline />
+      </div>
+    </div>
+
     <!-- Academic Journey Section -->
     <div class="wrapper bg-light-custom py-4 mt-0 mb-0">
       <div class="container py-2">
@@ -54,6 +64,7 @@ import { ref } from 'vue'
 import MeImage from '@/assets/About/Me.png'
 import pdfURL from '@/assets/About/Resume.pdf'
 import VueVerticalTimeline from '@/components/About/VueVerticalTimeline.vue'
+import CareerTimeline from '@/components/About/CareerTimeline.vue'
 import ResumeModal from '@/components/About/ResumeModal.vue'
 
 const isModalOpen = ref(false)
